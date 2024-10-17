@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Детали заказа #{{ order.id }}</h1>
+    <p><strong>Адрес:</strong> {{ order.address }}</p>
+    <p><strong>Сумма:</strong> {{ order.sum }}</p>
+    <p><strong>Статус:</strong> {{ order.get_delivery_status_display }}</p>
+    <p><strong>Время доставки:</strong> {{ order.waiting_time }}</p>
+    <p><strong>Способ оплаты:</strong> {{ order.get_payment_method_display }}</p>
+
+    <a href="{% url 'order_update' order.pk %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'order_list' %}" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}

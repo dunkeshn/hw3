@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Список заказов</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Адрес</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Время доставки</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.address|truncatechars:30 }}</td>
+                <td>{{ order.sum }}</td>
+                <td>{{ order.get_delivery_status_display }}</td>
+                <td>{{ order.waiting_time }}</td>
+                <td>
+                    <a href="{% url 'order_detail' order.pk %}">Просмотр</a> |
+                    <a href="{% url 'order_update' order.pk %}">Редактировать</a> |
+                    <a href="{% url 'order_delete' order.pk %}">Удалить</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Заказы отсутствуют</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'order_create' %}" class="btn btn-primary">Создать новый заказ</a>
+{% endblock %}
