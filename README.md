@@ -22,4 +22,5 @@
 ![image](https://github.com/user-attachments/assets/72b99818-874e-4839-a35e-cd320ac6faae)
 ![image](https://github.com/user-attachments/assets/b308ed20-0362-495c-ba90-dee4276311fb)
 ![image](https://github.com/user-attachments/assets/6b4197da-0185-4bcf-859e-9400248c881e)
-
+Урок 6 фильтры
+![image](https://github.com/user-attachments/assets/7ad37660-6187-4aa5-a488-c142f58b2e3b)
