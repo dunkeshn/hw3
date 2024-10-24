@@ -2,12 +2,15 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Order
+from django_filters.views import FilterView
+from core import filters
 
 
-class OrderListView(ListView):
+class OrderListView(FilterView):
     model = Order
     template_name = 'orders/order_list.html'
     context_object_name = 'orders'
+    filterset_class = filters.Order
 
 
 class OrderDetailView(DetailView):

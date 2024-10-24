@@ -44,6 +44,7 @@ class Cafe(models.Model):
 
 
 class Order(models.Model):
+
     class DeliveryStatus(models.TextChoices):
         PAYING = 'PAYING', 'Оплата заказа'
         PREPARING = 'PREPARING', 'Заказ готовится'
@@ -57,12 +58,12 @@ class Order(models.Model):
                                       verbose_name='Товары')
     cafe = models.ForeignKey(to=Cafe, on_delete=models.PROTECT, related_name='orders', verbose_name='Кофейни',
                              null=True)
-    sum = models.DecimalField(verbose_name='Сумма', max_digits=10, decimal_places=2)
+    sum = models.DecimalField(verbose_name='Сумма', max_digits=10, decimal_places=2, null=True, blank=True)
     delivery_status = models.CharField('Статус доставки', max_length=100, choices=DeliveryStatus.choices,
-                                       default=DeliveryStatus.PAYING)
+                                       default=DeliveryStatus.PAYING, null=True, blank=True)
     payment_method = models.CharField('Способ оплаты', max_length=100, choices=PaymentMethod.choices, null=True)
-    address = models.TextField('Адрес')
-    waiting_time = models.TimeField('Время доставки')
+    address = models.TextField('Адрес', null=True, blank=True)
+    waiting_time = models.TimeField('Время доставки', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Заказ'
